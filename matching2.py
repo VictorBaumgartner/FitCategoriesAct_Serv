@@ -1,42 +1,58 @@
 import json
-import requests
+from supabase import create_client
+import unicodedata
 
-# Config Supabase
+# Supabase Config
 SUPABASE_URL = "https://zqiftxlcvsfbxbsxwytc.supabase.co"
 SUPABASE_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpxaWZ0eGxjdnNmYnhic3h3eXRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2MjA1NjAsImV4cCI6MjA2MDE5NjU2MH0.Yfato4huGnjvWIluyX3aJwmt3NemZUo2fsODn80WieI"
 SUPABASE_TABLE = "demo"
 
-headers = {
-    "apikey": SUPABASE_API_KEY,
-    "Authorization": f"Bearer {SUPABASE_API_KEY}",
-    "Content-Type": "application/json",
-    "Prefer": "return=minimal"
-}
+# Initialize Supabase Client
+supabase = create_client(SUPABASE_URL, SUPABASE_API_KEY)
 
-# Charger les correspondances
-with open(r"C:\Users\victo\Desktop\categ\categories_to_activities.json", "r", encoding="utf-8") as f:
-    activities_mapping = json.load(f)
+def normalize_text(text):
+    return unicodedata.normalize('NFKC', str(text)).strip()
 
-with open(r"C:\Users\victo\Desktop\categ\categories_to_services.json", "r", encoding="utf-8") as f:
-    services_mapping = json.load(f)
-
-# Fusionner les données
-all_categories = set(activities_mapping.keys()) | set(services_mapping.keys())
-
-for cat in all_categories:
-    payload = {
-        "meta_category": cat,
-        "activities": activities_mapping.get(cat, []),
-        "services": services_mapping.get(cat, [])
+# Load and normalize JSON keys in advance
+with open(r"C:\Users\victo\Desktop\CS\Job\categ\categories_to_activities.json", "r", encoding='utf-8') as f:
+    activities_mapping = {
+        normalize_text(k): v 
+        for k, v in json.load(f).items()
     }
 
-    response = requests.post(
-        f"{SUPABASE_URL}/rest/v1/{SUPABASE_TABLE}",
-        headers=headers,
-        json=payload
-    )
+with open(r"C:\Users\victo\Desktop\CS\Job\categ\categories_to_services.json", "r", encoding='utf-8') as f:
+    services_mapping = {
+        normalize_text(k): v 
+        for k, v in json.load(f).items()
+    }
 
-    if response.status_code in [201, 200, 204]:
-        print(f"✅ Insertion réussie pour la catégorie : {cat}")
-    else:
-        print(f"❌ Erreur ({response.status_code}) pour {cat} : {response.text}")
+# Get all categories from DB (normalized)
+db_categories = supabase.table(SUPABASE_TABLE)\
+    .select("meta_category")\
+    .execute()
+    
+all_categories = {
+    normalize_text(item['meta_category']) 
+    for item in db_categories.data
+}
+
+for db_category in all_categories:
+    # Find matching normalized key
+    activity = next(
+        (v[0] for k, v in activities_mapping.items() 
+         if normalize_text(k) == db_category),
+        ""
+    )
+    
+    service = next(
+        (v[0] for k, v in services_mapping.items()
+         if normalize_text(k) == db_category),
+        ""
+    )
+    
+    data = {
+        "meta_category": db_category,  # Original DB value
+        "activities": activity,
+        "services": service
+    }
+
