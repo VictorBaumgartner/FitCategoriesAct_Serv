@@ -1,0 +1,235 @@
+﻿ID,Name
+9,"Service petit-déjeuner"
+25,"Fêtes d'anniversaire"
+26,"Enfants bienvenus"
+27,"Bébés bienvenus"
+28,"Animaux bienvenus"
+29,"Accessible en fauteuil"
+30,"Groupes bienvenus"
+31,"Mariages et réceptions"
+33,"Réservation recommandée"
+34,"Vente à emporter"
+35,"Commande sans contact"
+36,"Service de livraison"
+37,"Traiteur à domicile"
+38,Climatisation
+39,"Wi-Fi gratuit"
+40,"Pas de Wi-Fi"
+41,"Wi-Fi payant"
+43,Télévision
+44,"Prises à disposition"
+45,"Téléphones interdits"
+46,"Musique d'ambiance"
+47,"Lieu calme"
+48,Karaoké
+49,"Spectacle vivant"
+50,Végétalisé
+51,Associatif
+52,Ecoresponsable
+53,"Zéro déchet"
+54,Escalier
+55,Ascenseur
+56,Vestiaire
+57,Aquarium
+58,"accès Internet"
+59,"Photos autorisées"
+60,"Pas de photos"
+61,"Baies vitrées"
+62,"Parking gratuit"
+63,Parking
+64,"Parking vélos"
+65,"Zone fumeur"
+66,"Zone non fumeur"
+67,Voiturier
+68,Sommelier
+70,"Self service"
+71,"Service vestiaire"
+72,"Service de nettoyage"
+73,"Service à table"
+74,"Terrasse extérieure"
+75,"Aire de pique nique"
+76,"Terrain de jeux"
+77,"Salle de sport"
+80,Bibliothèque
+81,"Jeux d'arcade"
+82,"Billard français"
+83,"Billard américain"
+84,"Salle de réunion"
+85,"Espace de co-working"
+86,"Salle de projection"
+87,"Piscine intérieure"
+88,"Piscine extérieure"
+89,Plage
+91,"Galerie d'art"
+92,Chambres
+93,Douches
+94,Boutique
+95,"Eau à volonté"
+96,"Maillot de bain interdit"
+97,"Maillot de bain autorisé"
+98,"Soirées privées"
+99,"Point d'information"
+100,"Cours de cuisine"
+101,"tenue de soirée requise"
+102,"Chaise de bébé"
+103,"Menus disponibles"
+104,"Couverts disponibles"
+105,"Caméras de surveillance"
+106,Poubelles
+107,Extincteurs
+108,"Table à langer"
+109,"Vue panoramique"
+110,"Stationnement interdit"
+111,"WC mixte"
+112,"WC homme"
+113,"WC femme"
+114,"WC accessible en fauteuil"
+115,Lounge
+116,"Métro à proximité"
+117,"Tramway à proximité"
+118,"Gare à proximité"
+119,"Gare routière à proximité"
+120,"Vélib à proximité"
+121,"Réservation obligatoire"
+122,"Parking poids-lourds"
+123,"Parking moto"
+124,"Plage privée"
+125,"Terrasse non-fumeur"
+126,"Jeux pour enfants"
+127,"Jeux de société"
+128,"Station de vélos à proximité"
+129,Cabaret
+130,Antiquaire
+131,"Ouvert tard"
+132,"Piste de danse"
+133,"Salle de concert"
+134,"Centre culturel"
+135,"Temple bouddhiste"
+136,"Magasin bio"
+137,"Épicerie fine"
+138,"Vidéo projecteur"
+139,"Retransmissions sportives"
+140,"Pop-rock, populaire"
+141,"Musique disco, dance"
+142,"Latino, reggaeton"
+143,"Jazz, blues"
+144,"Musique vocal, instrumental"
+145,"Musique électro, house, techno"
+146,"Musique classique"
+147,"Musique country, folk"
+148,"Funk, soul, R&B, hiphop"
+149,"Parking sur la voie publique"
+150,"Terrasse intérieure"
+151,"Terrasse chauffée"
+152,"Terrasse non chauffée"
+153,"Terrasse couverte"
+154,"Terrasse fumeur"
+155,Terrasse
+156,"Stationnement payant à proximité"
+157,"Parking public à proximité"
+158,"Vue exceptionnelle"
+159,Fumoir
+160,Non-fumeur
+161,Fumeur
+162,"Seulement à emporter"
+164,"Salons privés"
+165,"Doggy bag"
+166,Bar
+167,"Bar à cocktails"
+168,Mixologie
+169,"Bar à vin"
+170,"Bar à bière"
+171,"Droit de bouchon"
+172,Teppanyaki
+173,"Espace éco-responsable"
+174,"Bar à thème"
+175,"Circuit court"
+176,"Vestiaire payant"
+177,"Vestiaire gratuit"
+178,"Vestiaire obligatoire"
+179,Concerts
+180,Podium
+186,Privatisation
+187,"Toilettes publiques"
+188,Défibrillateur
+190,"Distributeur de billets"
+191,"Navette gratuite"
+192,"Sur rendez-vous"
+193,"Consigne à bagage "
+194,"Les animaux de compagnie ne sont pas autorisés"
+195,"Pièce non fumeur"
+196,"Gilet de sauvetage"
+197,"Bouée de sauvetage"
+198,"Réservé aux adultes"
+199,Toilettes
+200,Famille
+201,"Pistes cyclables"
+202,Téléphériques
+203,"Assistance dépannage"
+204,Télésièges
+206,Hammam
+207,"Piscine chauffée"
+208,"Salon de tisanerie"
+209,Jacuzzi
+210,Adhésion
+211,"Achat en ligne"
+212,"Billetterie en ligne"
+213,Parasol
+214,Piscine
+215,Sauna
+216,"Pistes de ski"
+217,"Accessible aux aveugles"
+218,"Avec équipage"
+219,"Sans équipage"
+220,"Chaise longue"
+221,"Accessible aux sourds"
+222,Snack
+223,"Jardin intérieur"
+224,"Panier repas"
+225,"Vente en ligne"
+226,"Salle de conférence entièrement équipée"
+227,Entraînement
+228,"Accessible aux personnes handicapées physiques"
+229,"Réservation obligatoire"
+230,"Adhésion requise"
+231,"Enfants seulement"
+232,Location
+233,"Remise à niveau"
+234,"Permis nécessaire"
+235,"Permis non nécessaire"
+236,"Conditionnel pour les malvoyants"
+237,Solarium
+238,"Cross de neige"
+239,"Parks de ski"
+240,"Remontées mécaniques"
+241,"Guides de montagne"
+242,"Conditionnel pour handicapés mentaux"
+243,"Accessible aux handicapées mentales"
+244,"Conditionnel pour handicapés physiques"
+245,"Conditionnel pour sourds"
+246,Funiculaire
+247,"Location d'équipage"
+248,Association
+249,Transat
+250,"Instructeur du ski"
+251,"Guide de moyenne montagne"
+252,"Guide de haute montagne"
+253,"Location de maillots de bain"
+254,"Location de matériel de plongée"
+255,"Location de ski"
+256,"Location de patins à glace"
+257,"Location de patins à roulettes"
+258,Divertissement
+259,"Pistes ludiques"
+260,Téléski
+261,"Animation thématique spécifique"
+262,"Cours gratuits"
+264,Instructeur
+265,Cours
+266,"Instructeur qualifié"
+267,"Station de remplissage entièrement équipée"
+268,"Zone de lavage de voitures"
+269,"Borne de gonflage"
+270,Drive
+271,"Station de recharge électrique"
+272,"Navette payant"
