@@ -1,6 +1,5 @@
 import json
 from supabase import create_client
-import unicodedata
 
 # Supabase Config
 SUPABASE_URL = "https://zqiftxlcvsfbxbsxwytc.supabase.co"
@@ -10,49 +9,50 @@ SUPABASE_TABLE = "demo"
 # Initialize Supabase Client
 supabase = create_client(SUPABASE_URL, SUPABASE_API_KEY)
 
-def normalize_text(text):
-    return unicodedata.normalize('NFKC', str(text)).strip()
+# Load JSON Data
+with open(r"C:\Users\victo\Desktop\CS\Job\categ\categories_to_activities.json", "r") as f:
+    activities_mapping = json.load(f)  # Format: {"category": ["activity1", "activity2"]}
 
-# Load and normalize JSON keys in advance
-with open(r"C:\Users\victo\Desktop\CS\Job\categ\categories_to_activities.json", "r", encoding='utf-8') as f:
-    activities_mapping = {
-        normalize_text(k): v 
-        for k, v in json.load(f).items()
-    }
+with open(r"C:\Users\victo\Desktop\CS\Job\categ\categories_to_services.json", "r") as f:
+    services_mapping = json.load(f)  # Format: {"category": ["service1", "service2"]}
 
-with open(r"C:\Users\victo\Desktop\CS\Job\categ\categories_to_services.json", "r", encoding='utf-8') as f:
-    services_mapping = {
-        normalize_text(k): v 
-        for k, v in json.load(f).items()
-    }
+# Get all unique categories from both mappings
+all_categories = set(activities_mapping.keys()).union(services_mapping.keys())
 
-# Get all categories from DB (normalized)
-db_categories = supabase.table(SUPABASE_TABLE)\
-    .select("meta_category")\
-    .execute()
+for cat in all_categories:
+    # Initialize empty warnings
+    activity_warning = ""
+    service_warning = ""
     
-all_categories = {
-    normalize_text(item['meta_category']) 
-    for item in db_categories.data
-}
-
-for db_category in all_categories:
-    # Find matching normalized key
-    activity = next(
-        (v[0] for k, v in activities_mapping.items() 
-         if normalize_text(k) == db_category),
-        ""
-    )
+    # Get activity (or mark as missing)
+    if cat in activities_mapping:
+        activity = activities_mapping[cat][0] if activities_mapping[cat] else ""
+    else:
+        activity = ""
+        activity_warning = "⚠️ No activity mapping found"
     
-    service = next(
-        (v[0] for k, v in services_mapping.items()
-         if normalize_text(k) == db_category),
-        ""
-    )
+    # Get service (or mark as missing)
+    if cat in services_mapping:
+        service = services_mapping[cat][0] if services_mapping[cat] else ""
+    else:
+        service = ""
+        service_warning = "⚠️ No service mapping found"
     
     data = {
-        "meta_category": db_category,  # Original DB value
+        "meta_category": cat,
         "activities": activity,
         "services": service
     }
+    
+    try:
+        response = supabase.table(SUPABASE_TABLE).insert(data).execute()
+        print(f" Inserted: {cat}")
+        if activity_warning:
+            print(f"   {activity_warning}")
+        if service_warning:
+            print(f"   {service_warning}")
+    except Exception as e:
+        print(f" Failed to insert {cat}: {str(e)}")
+
+
 

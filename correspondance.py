@@ -74,21 +74,21 @@ import json
 from collections import defaultdict
 
 # Charger les activités sans pandas
-with open("activities.csv", "r", encoding="utf-8") as f:
+with open(r"C:\Users\victo\Desktop\CS\Job\categ\activities.csv", "r", encoding="utf-8") as f:
     reader = csv.DictReader(f)
-    activity_names = set(row["Name"].strip() for row in reader if row["Name"].strip())
+    activity_names = set(row["Name"].strip() for row in reader if row["meta_category"].strip())
 
 # Charger les services sans pandas
-with open("services.csv", "r", encoding="utf-8") as f:
+with open(r"C:\Users\victo\Desktop\CS\Job\categ\services.csv", "r", encoding="utf-8") as f:
     reader = csv.DictReader(f)
-    service_names = set(row["Name"].strip() for row in reader if row["Name"].strip())
+    service_names = set(row["Name"].strip() for row in reader if row["meta_category"].strip())
 
 # Mise en minuscules pour matching
 activity_names_lower = {name.lower(): name for name in activity_names}
 service_names_lower = {name.lower(): name for name in service_names}
 
 # Lire le fichier categ.txt
-with open("categ.txt", "r", encoding="utf-8") as f:
+with open(r"C:\Users\victo\Desktop\CS\Job\categ\snippet_event.csv", "r", encoding="utf-8") as f:
     lines = f.readlines()
 
 # Dictionnaires de mapping
@@ -117,10 +117,10 @@ for line in lines:
                 break
 
 # Sauvegarde JSON propre
-with open("categories_to_activities.json", "w", encoding="utf-8") as f:
+with open("categories4activities.json", "w", encoding="utf-8") as f:
     json.dump({k: sorted(v) for k, v in category_to_activities.items()}, f, ensure_ascii=False, indent=2)
 
-with open("categories_to_services.json", "w", encoding="utf-8") as f:
+with open("categories4services.json", "w", encoding="utf-8") as f:
     json.dump({k: sorted(v) for k, v in category_to_services.items()}, f, ensure_ascii=False, indent=2)
 
 print("✅ JSON générés avec les catégories complètes !")
